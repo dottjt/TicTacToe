@@ -1,3 +1,4 @@
+// game winning logic. 
 var combination = { 
 p1: {
 	h1: [0,0,0],
@@ -20,6 +21,7 @@ p2: {
  	d2: [0,0,0]
 }};
 
+// tile selectors
 var t1 = document.getElementById('t1');
 var t2 = document.getElementById('t2');
 var t3 = document.getElementById('t3');
@@ -30,27 +32,32 @@ var t7 = document.getElementById('t7');
 var t8 = document.getElementById('t8');
 var t9 = document.getElementById('t9');
 
+// utilised to replicate jQuery .onclick() function
+var tile_array = [t1, t2, t3, t4, t5, t6, t7, t8, t9]
 
-var determineWinner = function(n) {
-	for (var combo in combination) {
+
+var determineWinner = function(player) {
+	for (var combo in combination.player) {
 		if (combo === [1,1,1] || combo === [1,1,1,1]) {
 			alert(n + "wins this round!");
 		}
 } };
 
+
 var playerTurn = function(p1,p2) {
 	for (var i = 0; i < 9; i++) {
 		if (i % 2 === 0) {
-			p1();
+			
 			
 		} else {
-			p2();
+			
 		} 
 	} 
 }
 
 
-function uiChange(player,n) {
+
+function t1E(player,n) {
 		player.combination.h1[0] = 1;
 		player.combination.v1[0] = 1;
 		player.combination.d1[0] = 1;
@@ -58,39 +65,43 @@ function uiChange(player,n) {
 		t1.style.fontSize = "500%";
 		determineWinner(player);
 }
-
-t1.addEventListener('click', uiChange(player, n) {
-	
+t1.addEventListener('click', function() { t1E(player,n); }, false);
 
 
-t2.addEventListener('click', function()  {
+function t2E(player,n) {
 		player.combination.h1[1] = 1;
 		player.combination.v2[0] = 1;
 		t2.InnerHTML = n;
 		t2.style.fontSize = "500%";
 		determineWinner(player);
-	});
+	};
+t2.addEventListener('click', function() { t2E(player,n); }, false);
 
-var	t3E = 	t3.addEventListener('click', function()  {
+
+function t3E(player, n) {
 		player.combination.h1[2] = 1;
 		player.combination.v3[0] = 1;
 		player.combination.d2[2] = 1;
 		t3.InnerHTML = n;
 		t3.style.fontSize = "500%";
 		determineWinner(player);
-	});
+}
+t3.addEventListener('click', function() { t3E(player,n); }, false);
+
 
 	// middle row of tiles
 
-var	t4E = 	t4.addEventListener('click', function()  {
+function t4E(player, n) {
 		player.combination.h2[0] = 1;
 		player.combination.v1[1] = 1;
 		t4.InnerHTML = n;
 		t4.style.fontSize = "500%";
 		determineWinner(player);
-	});
+	}
+t4.addEventListener('click', function() { t4E(player,n); }, false);
 
-var	t5E = 	t5.addEventListener('click', function()  {
+
+function t5E(player, n) {
 		player.combination.h2[1] = 1;
 		player.combination.v2[1] = 1;
 		player.combination.d1[1] = 1;
@@ -98,61 +109,76 @@ var	t5E = 	t5.addEventListener('click', function()  {
 		t5.InnerHTML = n;
 		t5.style.fontSize = "500%";
 		determineWinner(player);
-	});
+	}
+t5.addEventListener('click', function() { t5E(player,n); }, false);
 
-var	t6E = 	t6.addEventListener('click', function()  {
+
+function t6E(player, n) {
 		player.combination.h2[3] = 1;
 		player.combination.v3[1] = 1;
 		t6.InnerHTML = n;
 		t6.style.fontSize = "500%";
 		determineWinner(player);
-	});
+	}
+t6.addEventListener('click', function() { t6E(player,n);}, false);
+
 
 	//bottom row of tiles
 
-var	t7E = 	t7.addEventListener('click', function()  {
+function t7E(player, n) {
 		player.combination.h3[0] = 1;
 		player.combination.v1[2] = 1;
 		player.combination.d2[0] = 1;
 		t7.InnerHTML = n;
 		t7.style.fontSize = "500%";
 		determineWinner(player);
-	});
+	}
+t7.addEventListener('click', function() { t7E(player,n); }, false);
 
-var	t8E = 	t8.addEventListener('click', function()  {
+
+function t8E(player, n) {
 		player.combination.h3[1] = 1;
 		player.combination.v2[2] = 1;
 		t8.InnerHTML = n;
 		t8.style.fontSize = "500%";
 		determineWinner(player);
-	});
+	}
+t8.addEventListener('click', function() { t8E(player,n); }, false);
 
-var	t9E = t9.addEventListener('click', function()  {
+
+var t9E = function(player, n) {
 		player.combination.h3[2] = 1;
 		player.combination.v3[2] = 1;
 		player.combination.d1[2] = 1;
 		t9.InnerHTML = n;
 		t9.style.fontSize = "500%";
 		determineWinner(player);
-	});
+	}
 }
+t9.addEventListener('click', function() { t9E(player,n); }, false);
 
 
 
-
-var play = function() {
+var gamePlay = function() {
 
 	console.log("Thank you for playing TicTacToe, have fun!");
 	var tim = prompt("Player one, please provide your name");
 	var tim2 = prompt("Player two, please provide your name");
 	playerTurn(tim,tim2);
 	determineWinner();
+
 	
 }
 
 
-play();
 
+var play = function() {
+	if (t1.onclick())
+		addEventListener('click', function() { t1E(player,n); }, false);
+
+}
+
+play();
 
 
 
