@@ -1,4 +1,5 @@
-var combination = { 	
+var combination = { 
+p1: {
 	h1: [0,0,0],
 	h2: [0,0,0],
 	h3: [0,0,0],
@@ -7,9 +8,8 @@ var combination = {
  	v3: [0,0,0],
  	d1: [0,0,0],
  	d2: [0,0,0]
-};
-
-var p2_combinations = { 	
+},
+p2: {
 	h1: [0,0,0],
 	h2: [0,0,0],
 	h3: [0,0,0],
@@ -18,9 +18,9 @@ var p2_combinations = {
  	v3: [0,0,0],
  	d1: [0,0,0],
  	d2: [0,0,0]
-};
+}};
 
-var t1 = document.getElementById('t1')
+var t1 = document.getElementById('t1');
 var t2 = document.getElementById('t2');
 var t3 = document.getElementById('t3');
 var t4 = document.getElementById('t4');
@@ -30,122 +30,128 @@ var t7 = document.getElementById('t7');
 var t8 = document.getElementById('t8');
 var t9 = document.getElementById('t9');
 
-function playerTurn(n) {
-	for (var i = 0; i < 9; i++) {
-		if (i == 0) {
-			n.innerHTML = "X";
-			i += 1;
-			return
+
+var determineWinner = function(n) {
+	for (var combo in combination) {
+		if (combo === [1,1,1] || combo === [1,1,1,1]) {
+			alert(n + "wins this round!");
 		}
-		if (i % 2 == 0) {
-			n.innerHTML = "O";
-			i += 1;
-			return 
-			}
-		else {
-			n.InnerHTML = "X";
-			i += 1;
-			return 
+} };
+
+var playerTurn = function(p1,p2) {
+	for (var i = 0; i < 9; i++) {
+		if (i % 2 === 0) {
+			p1();
+			
+		} else {
+			p2();
 		} 
 	} 
 }
 
-	t1.addEventListener('click', function() {
-		combination.h1[0] = 1;
-		combination.v1[0] = 1;
-		combination.d1[0] = 1;
-		playerTurn(t1);
-		determineWinner();
 
+function uiChange(player,n) {
+		player.combination.h1[0] = 1;
+		player.combination.v1[0] = 1;
+		player.combination.d1[0] = 1;
+		t1.InnerHTML = n;
+		t1.style.fontSize = "500%";
+		determineWinner(player);
+}
+
+t1.addEventListener('click', uiChange(player, n) {
+	
+
+
+t2.addEventListener('click', function()  {
+		player.combination.h1[1] = 1;
+		player.combination.v2[0] = 1;
+		t2.InnerHTML = n;
+		t2.style.fontSize = "500%";
+		determineWinner(player);
 	});
 
-	t2.addEventListener('click', function()  {
-		combination.h1[1] = 1;
-		combination.v2[0] = 1;
-		playerTurn(t2);
-		determineWinner();
-
-	});
-
-	t3.addEventListener('click', function()  {
-		combination.h1[2] = 1;
-		combination.v3[0] = 1;
-		combination.d2[2] = 1;
-		playerTurn(t3);
-		determineWinner();
-
+var	t3E = 	t3.addEventListener('click', function()  {
+		player.combination.h1[2] = 1;
+		player.combination.v3[0] = 1;
+		player.combination.d2[2] = 1;
+		t3.InnerHTML = n;
+		t3.style.fontSize = "500%";
+		determineWinner(player);
 	});
 
 	// middle row of tiles
 
-	t4.addEventListener('click', function()  {
-		combination.h2[0] = 1;
-		combination.v1[1] = 1;
-		playerTurn(t4);
-		determineWinner();
-
+var	t4E = 	t4.addEventListener('click', function()  {
+		player.combination.h2[0] = 1;
+		player.combination.v1[1] = 1;
+		t4.InnerHTML = n;
+		t4.style.fontSize = "500%";
+		determineWinner(player);
 	});
 
-	t5.addEventListener('click', function()  {
-		combination.h2[1] = 1;
-		combination.v2[1] = 1;
-		combination.d1[1] = 1;
-		combination.d2[1] = 1;
-		playerTurn(t5);
-		determineWinner();
-
+var	t5E = 	t5.addEventListener('click', function()  {
+		player.combination.h2[1] = 1;
+		player.combination.v2[1] = 1;
+		player.combination.d1[1] = 1;
+		player.combination.d2[1] = 1;
+		t5.InnerHTML = n;
+		t5.style.fontSize = "500%";
+		determineWinner(player);
 	});
 
-	t6.addEventListener('click', function()  {
-		combination.h2[3] = 1;
-		combination.v3[1] = 1;
-		playerTurn(t6);
-		determineWinner();
-
+var	t6E = 	t6.addEventListener('click', function()  {
+		player.combination.h2[3] = 1;
+		player.combination.v3[1] = 1;
+		t6.InnerHTML = n;
+		t6.style.fontSize = "500%";
+		determineWinner(player);
 	});
 
 	//bottom row of tiles
 
-	t7.addEventListener('click', function()  {
-		combination.h3[0] = 1;
-		combination.v3[2] = 1;
-		combination.d2[0] = 1;
-		playerTurn(t7);
-		determineWinner();
-
+var	t7E = 	t7.addEventListener('click', function()  {
+		player.combination.h3[0] = 1;
+		player.combination.v1[2] = 1;
+		player.combination.d2[0] = 1;
+		t7.InnerHTML = n;
+		t7.style.fontSize = "500%";
+		determineWinner(player);
 	});
 
-	t8.addEventListener('click', function()  {
-		combination.h3[1] = 1;
-		combination.v3[2] = 1;
-		playerTurn(t8);
-		determineWinner();
-
+var	t8E = 	t8.addEventListener('click', function()  {
+		player.combination.h3[1] = 1;
+		player.combination.v2[2] = 1;
+		t8.InnerHTML = n;
+		t8.style.fontSize = "500%";
+		determineWinner(player);
 	});
 
-	t9.addEventListener('click', function()  {
-		combination.h1[2] = 1;
-		combination.v3[2] = 1;
-		combination.d1[2] = 1;
-		playerTurn(t9);
-		determineWinner();
+var	t9E = t9.addEventListener('click', function()  {
+		player.combination.h3[2] = 1;
+		player.combination.v3[2] = 1;
+		player.combination.d1[2] = 1;
+		t9.InnerHTML = n;
+		t9.style.fontSize = "500%";
+		determineWinner(player);
+	});
+}
 
-});
+
+
+
+var play = function() {
+
+	console.log("Thank you for playing TicTacToe, have fun!");
+	var tim = prompt("Player one, please provide your name");
+	var tim2 = prompt("Player two, please provide your name");
+	playerTurn(tim,tim2);
+	determineWinner();
 	
+}
 
 
-function determineWinner() {
-	for (var combo in combination) {
-		if (combo = [1,1,1]) {
-			alert("Player one wins");
-		}
-	}
-};
-
-
-
-
-
+play();
 
 
 
