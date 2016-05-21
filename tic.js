@@ -24,13 +24,16 @@ var t9 = document.getElementById('t9');
 // utilised to replicate jQuery .onclick() function
  
 
-
+// 21-05-16, got it to work, largely with the tmp function. 
 var determineWinner = function() {
-	for (var combo in combination. {
-		if (combo === [1,1,1] || combo === [1,1,1,1]) {
-			alert(n + "wins this round!");
+	for (var i in combination) {
+		var tmp = combination[i].toString();
+		console.log(combination[i]);
+		if (tmp === "1,1,1" || tmp === "1,1,1,1") {
+			alert("You win this round!");
 		}
-} };
+	}
+};
 
 
 
@@ -42,7 +45,7 @@ function t1E() {
 		t1.style.fontSize = "500%";
 		determineWinner();
 }
-var t1Event = t1.addEventListener('click', t1E(), false);
+var t1Event = t1.addEventListener('click', function() {t1E()}, false);
 
 
 function t2E() {
@@ -53,7 +56,7 @@ function t2E() {
 		determineWinner();
 	};
 
-var t2Event = t2.addEventListener('click', t2E(), false);
+var t2Event = t2.addEventListener('click', function() {t2E()}, false);
 
 
 function t3E() {
@@ -64,7 +67,7 @@ function t3E() {
 		t3.style.fontSize = "500%";
 		determineWinner();
 }
-var t3Event = t3.addEventListener('click', t3E(), false);
+var t3Event = t3.addEventListener('click', function() {t3E()}, false);
 
 
 	// middle row of tiles
@@ -76,7 +79,7 @@ function t4E() {
 		t4.style.fontSize = "500%";
 		determineWinner();
 	}
-var t4Event = .addEventListener('click', t4E(), false);
+var t4Event = .addEventListener('click', function() {t4E()}, false);
 
 
 function t5E() {
@@ -88,7 +91,7 @@ function t5E() {
 		t5.style.fontSize = "500%";
 		determineWinner();
 	}
-var t5Event = t5.addEventListener('click', t5E(), false);
+var t5Event = t5.addEventListener('click', function() {t5E()}, false);
 
 
 function t6E() {
@@ -98,7 +101,7 @@ function t6E() {
 		t6.style.fontSize = "500%";
 		determineWinner();
 	}
-var t6Event = t6.addEventListener('click', t6E(), false);
+var t6Event = t6.addEventListener('click', function() {t6E()}, false);
 
 
 	//bottom row of tiles
@@ -111,7 +114,7 @@ function t7E() {
 		t7.style.fontSize = "500%";
 		determineWinner();
 	}
-var t7Event = t7.addEventListener('click', t7E(), false);
+var t7Event = t7.addEventListener('click', function() {t7E()}, false);
 
 
 function t8E() {
@@ -121,7 +124,7 @@ function t8E() {
 		t8.style.fontSize = "500%";
 		determineWinner();
 	}
-var t8Event = t8.addEventListener('click', t8E(), false);
+var t8Event = t8.addEventListener('click', function() {t8E()}, false);
 
 
 var t9E = function() {
@@ -133,22 +136,8 @@ var t9E = function() {
 		determineWinner();
 	}
 }
-var t9Event = t9.addEventListener('click', t9E(), false);
+var t9Event = t9.addEventListener('click', function() {t9E()}, false);
 
-/*
-
-var gamePlay = function() {
-
-	console.log("Thank you for playing TicTacToe, have fun!");
-	var tim = prompt("one, please provide your name");
-	var tim2 = prompt("two, please provide your name");
-	urn(tim,tim2);
-	determineWinner());
-
-	
-}
-
-*/
 
 function player() { }
 
@@ -165,17 +154,26 @@ var play = function(p1,p2) {
 		} 
 	} 
 }
-
-	for(var i = 0; i < tile_array.length; i++){
-	    var elem = tile_array[i];   
-	    if (elem) { 
-
-	    }
+	
 
 
 play();
 
 
+/*
+
+var gamePlay = function() {
+
+	console.log("Thank you for playing TicTacToe, have fun!");
+	var tim = prompt("one, please provide your name");
+	var tim2 = prompt("two, please provide your name");
+	urn(tim,tim2);
+	determineWinner());
+
+	
+}
+
+*/
 
 /*
 var 	h1 = [0,0,0]					
