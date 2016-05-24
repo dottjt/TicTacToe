@@ -1,4 +1,14 @@
 // further testing by breaking things down. 
+var determineWinner = function() {
+	for (var i in combination) {
+		var tmp = combination[i].toString();
+		console.log(combination[i]);
+		if (tmp === "1,1,1" || tmp === "1,1,1,1") {
+			alert("You win this round!");
+		}
+	}
+};
+
 var combination = { 
 	h1: [0,0,0]
 };
@@ -11,6 +21,7 @@ var t3Event = t3.addEventListener('click', function() {t3E(p)}, false);
 var t2Event = t2.addEventListener('click', function() {t2E(p)}, false);
 var t1Event = t1.addEventListener('click', function() {t1E(p)}, false);
 
+//////////////////////////////
 
 var buffer = [true,false,true,false,true,false,true,false,true]
 
@@ -26,6 +37,11 @@ var buffer = [true,false,true,false,true,false,true,false,true]
 			var p = "O";
 		};
 
+//Okay, here is the main logical issue I'm facing. 
+//I'm trying to loop, but the problem is that it only stays at 1.
+//I don't know how to hold state with loop. 
+// 
+
 		function t1E(p) {
 			if (p === "X") {
 				t1.innerHTML = "X";
@@ -35,6 +51,7 @@ var buffer = [true,false,true,false,true,false,true,false,true]
 				t1.innerHTML = "O";
 				combination.h1[0] = 2;
 			}
+			determineWinner();
 		};
 		function t2E(p) {
 			if (p === "X") {
@@ -45,6 +62,7 @@ var buffer = [true,false,true,false,true,false,true,false,true]
 				t2.innerHTML = "O";
 				combination.h1[1] = 2;
 			}
+			determineWinner();
 		};
 
 		function t3E(player) {
@@ -56,8 +74,10 @@ var buffer = [true,false,true,false,true,false,true,false,true]
 				t3.innerHTML = "O";
 				combination.h1[2] = 2;
 			}
+			determineWinner();
+		};
+	};
 
-};
-};
+
 
 // so the good thing is 

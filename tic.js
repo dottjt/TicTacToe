@@ -24,7 +24,7 @@ var t9 = document.getElementById('t9');
 // utilised to replicate jQuery .onclick() function
  
 
-// 21-05-16, got it to work, largely with the tmp function. 
+// 21-05-16, got it to work, largely with the tmp function. final. 
 var determineWinner = function() {
 	for (var i in combination) {
 		var tmp = combination[i].toString();
@@ -79,7 +79,7 @@ function t4E() {
 		t4.style.fontSize = "500%";
 		determineWinner();
 	}
-var t4Event = .addEventListener('click', function() {t4E()}, false);
+var t4Event = t4.addEventListener('click', function() {t4E()}, false);
 
 
 function t5E() {

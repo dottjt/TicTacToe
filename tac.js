@@ -6,34 +6,24 @@ var determineWinner = function() {
 			alert("You win this round!");
 		}
 		if (tmp === "2,2,2") {
-			alert
+			alert()
 		}
 	}
 };
 
-var combination = { 
-	h1: [0,0,0]
-};
-
-/////////////////////////////////////////
 
 var t1 = document.getElementById('t1');
 var t2 = document.getElementById('t2');
 var t3 = document.getElementById('t3');
 
-var buffer = [true,false,true,false,true,false,true,false,true]
-	
-	for (var i = 0; i < length.buffer; i++) {
-	
-	// event function
-		if (buffer[i] === true) {
-			var p = "X";
 
-		} else {
-			var p = "O";
-		} 
+var combination = { 
+	h1: [0,0,0]
+};
 
-		function t1E(player) {
+
+/*
+		function t1E(p) {
 			if (p === "X") {
 				t1.innerHTML = "X";
 				combination.h1[0] = 1;
@@ -45,33 +35,77 @@ var buffer = [true,false,true,false,true,false,true,false,true]
 			determineWinner();
 		};
 
-		function t2E(player) {
+		function t2E(p) {
 			if (p === "X") {
-				t1.innerHTML = "X";
+				t2.innerHTML = "X";
 				combination.h1[1] = 1;
 			}
 			else {
-				t1.innerHTML = "O";
+				t2.innerHTML = "O";
 				combination.h1[1] = 2;
 			}
 			determineWinner();
 		};
 
-		function t3E(player) {
+		function t3E(p) {
 			if (p === "X") {
-				t1.innerHTML = "X";
+				t3.innerHTML = "X";
 				combination.h1[2] = 1;
 			}
 			else {
-				t1.innerHTML = "O";
+				t3.innerHTML = "O";
 				combination.h1[2] = 2;
 			}
 			determineWinner();
 		};
+*/
+
+/////////////////////////////////////////
 
 	
-		var t3Event = t3.addEventListener('click', function() {t3E(p)}, false);
-		var t2Event = t2.addEventListener('click', function() {t2E(p)}, false);
-		var t1Event = t1.addEventListener('click', function() {t1E(p)}, false);
 
-	};
+
+
+var playerOrder = function(p) { 
+	if (p % 2 === 0) {
+	 	var t = "X";		 
+	} else {
+		var t = "O";
+	} 
+	
+	t3.addEventListener('click', function() {
+		if (t === "X") {
+			 combination.h1[2] = 1;
+		} else {
+			 combination.h1[2] = 2;
+		}
+		t3.innerHTML = t;
+		determineWinner();
+	}, false);
+
+
+	t2.addEventListener('click', function() {
+		t2.innerHTML = t;
+		if (t === "X") {
+			combination.h1[1] = 1;
+		} else {
+			combination.h1[1] = 2;
+		}
+	}, false);
+
+	t1.addEventListener('click', function() {
+		t1.innerHTML = t;
+		if (t === "X") {
+			combination.h1[0] = 1;
+		} else {
+			combination.h1[0] = 2;
+		}
+
+	}, false);
+
+}
+
+
+for (var i = 0; i < 9; i++) {
+	playerOrder(i);	
+}
