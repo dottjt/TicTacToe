@@ -1,0 +1,12 @@
+So, here are the features which need to be added:
+
+Game functions 
+
+combination{}
+
+
+
+TEST LEGEND 
+
+
+

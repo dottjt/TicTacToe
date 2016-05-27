@@ -1,7 +1,8 @@
 // Unit tests 
 /* */
-// Now I hope to scale complexity to the full app size. 
-
+// Adding functions who's turn . 
+// leaderboard
+// reset board when done. 
 
   
 // cominbation logic for the 8 possible winning combinations, which changes to 
@@ -19,17 +20,6 @@ var combination = {
 };
 
 
-// tile selectors
-var t1 = document.getElementById('t1');
-var t2 = document.getElementById('t2');
-var t3 = document.getElementById('t3');
-var t4 = document.getElementById('t4');
-var t5 = document.getElementById('t5');
-var t6 = document.getElementById('t6');
-var t7 = document.getElementById('t7');
-var t8 = document.getElementById('t8');
-var t9 = document.getElementById('t9');
-
 var turnCounter = 0; 
 var combinationLogic = [1,2,1,2,1,2,1,2,1];
 
@@ -42,10 +32,12 @@ function determineWinner() {
 		if (tmp === "1,1,1" || tmp === "1,1,1,1") {
 			alert("Player One wins! Yeeaaaaaaaahhhhhhhh");
 			resetBoard();
+			leaderBoard("p1");
 			return
 		} else if (tmp === "2,2,2" || tmp === "2,2,2,2") {
 			alert("Player Two wins! Noooooooooooooooooo");
 			resetBoard();
+			leaderBoard("p2");
 			return
 			}
 	}
@@ -56,7 +48,55 @@ function determineWinner() {
 		}
 };
 	
+// leaderboard variables
+var p1s = document.getElementById("playeronescore");
+var p2s = document.getElementById("playertwoscore");
+var pt = document.getElementById("playerturn");
+var p1 = 0;
+var p2 = 0;
 
+
+
+function leaderBoard(x) {
+	if (x === "p1") {
+		p1 += 1;
+		p1s.innerHTML = p1;
+		console.log(p1);
+	} else { 
+		p2 += 1;
+		p2s.innerHTML = p2;
+		console.log(p2);
+	}
+
+}
+
+function resetBoard() {
+	// reset game logic
+	for (var i in combination) {
+		combination[i] = [0,0,0];
+	}
+	// reset tile counters 
+	for (var i = 0; i < tileArray.length; i++) {
+		tileArray[i].innerHTML = "";
+	};
+
+	this.turnCounter = 0;
+}
+
+
+// tile selectors
+var t1 = document.getElementById('t1');
+var t2 = document.getElementById('t2');
+var t3 = document.getElementById('t3');
+var t4 = document.getElementById('t4');
+var t5 = document.getElementById('t5');
+var t6 = document.getElementById('t6');
+var t7 = document.getElementById('t7');
+var t8 = document.getElementById('t8');
+var t9 = document.getElementById('t9');
+
+// for resetBoard
+var tileArray = [t1, t2, t3, t4, t5, t6, t7, t8, t9]
 
 // main gameplay function. Run this to set event logic and play game! 
 function gamePlay() { 
@@ -83,7 +123,13 @@ function findp() {
 		}
 }
 
-
+function playerTurn(s) {
+	if (s === 1) {
+		pt.innerHTML = "Player One";
+	} else {
+		pt.innerHTML ="Player Two";
+	}
+}
 
 function t1E() {
 		findp();
@@ -97,7 +143,7 @@ function t1E() {
 		combination.d1[0] = s;
 		turnCounter += 1;
 		determineWinner();
-
+		playerTurn(s);
 }
 
 function t2E() {
@@ -111,6 +157,7 @@ function t2E() {
 		combination.v2[0] = s;
 		turnCounter += 1;
 		determineWinner();
+		playerTurn(s);
 	};
 
 
@@ -126,6 +173,8 @@ function t3E() {
 		combination.d2[2] = s;
 		turnCounter += 1;
 		determineWinner();
+		playerTurn(s);
+
 	};
 
 function t4E() {
@@ -139,6 +188,7 @@ function t4E() {
 		combination.v1[1] = s;
 		turnCounter += 1;
 		determineWinner();
+		playerTurn(s);
 	};
 
 function t5E() {
@@ -154,6 +204,8 @@ function t5E() {
 		combination.d2[1] = s;
 		turnCounter += 1;
 		determineWinner();
+		playerTurn(s);
+
 	};
 
 function t6E() {
@@ -167,6 +219,7 @@ function t6E() {
 		combination.v3[1] = s;
 		turnCounter += 1;
 		determineWinner();
+		playerTurn(s);
 	};
 
 function t7E() {
@@ -181,6 +234,7 @@ function t7E() {
 		combination.d2[0] = s;
 		turnCounter += 1;
 		determineWinner();
+		playerTurn(s);
 	};
 
 function t8E() {
@@ -194,6 +248,7 @@ function t8E() {
 		combination.v2[2] = s;
 		turnCounter += 1;
 		determineWinner();
+		playerTurn(s);
 	};
 
 function t9E() {
@@ -208,6 +263,7 @@ function t9E() {
 		combination.d1[2] = s;
 		turnCounter += 1;
 		determineWinner();
+		playerTurn(s);
 	};
 
 

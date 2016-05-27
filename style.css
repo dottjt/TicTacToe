@@ -51,22 +51,42 @@ table {
 
 /* THIS IS WHERE IT STARTS */
 
-div {
+.grid > * {
 	margin: 0;
 	display: inline-block;
 	border: 1px solid;
-	width: 300px;
-	height: 300px;
+	width: 200px;
+	height: 200px;
 	box-sizing: border-box;
 	vertical-align: top;
 	text-align: center;
 	line-height: 150px;
+
+	font-size: 50px;
 }
 
 .container {
- width: 902px;
- height: 902px;
+	width: 100%;
 }
+
+.grid {
+	display: inline-block;
+	margin: 10px 10px 10px 200px;
+	width: 602px;
+	height: 602px;
+}
+
+.displayresults {
+	position: relative;
+	bottom: 100px;
+	width: 300px;
+	height: 300px;
+	border: 1px solid;
+	display: inline-block;
+
+	font-size: 30px;
+}
+
 
 
 
